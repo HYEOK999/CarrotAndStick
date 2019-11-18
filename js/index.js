@@ -17,6 +17,7 @@ const $refresh = document.querySelector('.refresh');
 const openPopup = () => {
   $popup.style.display = 'block';
   $overlay.style.display = 'block';
+  $inputCommit.focus();
   $inputGithub.value = '';
 };
 
@@ -41,12 +42,38 @@ const saveForcommit = () => {
 const closePopup = () => {
   $popup.style.display = 'none';
   $overlay.style.display = 'none';
+  $inputGithub.focus();
+  $inputGithub.classList.remove('input-github-sucess');
+  $inputGithub.classList.remove('input-github-error');
+  $inputGithub.placeholder = 'Enter your GITHUB URL!';
 };
 
 // Events
 $inputGithub.onkeyup = ({ keyCode }) => {
+<<<<<<< HEAD
   if ($inputGithub.value.trim() === '' || keyCode !== 13) return;
   openPopup();
+=======
+  const regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=_-])(?=.*[0-9]).{6,16}$/;
+  const testname = 'abc'; // 인풋 텍스트 닉네임
+
+  if (keyCode !== 13) return;
+  if ($inputGithub.value == '') {
+    $inputGithub.classList.add( 'input-github-error' );
+    $inputGithub.placeholder = 'Please enter your Nickname.';
+  } else if( $inputGithub.value == testname ) {
+    $inputGithub.classList.add( 'input-github-sucess' );
+    $inputGithub.placeholder = 'Thank you for using.';
+    openPopup(); // 다희님 코드
+    $inputGithub.value = '';
+  } else if ( $inputGithub.value !== regExp ) {
+    $inputGithub.classList.add( 'input-github-error' );
+    $inputGithub.placeholder = 'This is not a valid Nickname.';
+    $inputGithub.value = '';
+  };
+  // 1번, 올바른 닉네임을 입력할 경우, 팝업의 input으로 focus를 옮길 것.
+  // 2번, 팝업 창에서 x버튼을 누를 경우 input내용을 전부 비우고 focus를 input으로 다시 줄 것.
+>>>>>>> parent of 2cb6187... Revert "feat: focus bug fixed"
 };
 
 $btnOk.onclick = () => {
