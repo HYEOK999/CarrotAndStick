@@ -1,3 +1,9 @@
+// test Type.js
+var typed = new Typed('.carrot-stick', {
+  strings: ["Welcome!", "Enter your GITHUB URL."],
+  typeSpeed: 100,
+  cursorChar: ''
+});
 
 // DOMs
 const $inputGithub = document.querySelector('.input-github');
