@@ -17,7 +17,6 @@ const $refresh = document.querySelector('.refresh');
 const openPopup = () => {
   $popup.style.display = 'block';
   $overlay.style.display = 'block';
-  $inputCommit.focus();
   $inputGithub.value = '';
 };
 
@@ -42,10 +41,6 @@ const saveForcommit = () => {
 const closePopup = () => {
   $popup.style.display = 'none';
   $overlay.style.display = 'none';
-  $inputGithub.focus();
-  $inputGithub.classList.remove('input-github-sucess');
-  $inputGithub.classList.remove('input-github-error');
-  $inputGithub.placeholder = 'Enter your GITHUB URL!';
 };
 
 // Events
@@ -58,7 +53,7 @@ $inputGithub.onkeyup = ({ keyCode }) => {
     $inputGithub.classList.add( 'input-github-error' );
     $inputGithub.placeholder = 'Please enter your Nickname.';
   } else if( $inputGithub.value == testname ) {
-    $inputGithub.classList.add( 'input-github-sucess' );
+    $inputGithub.classList.add( 'input-github-sucess' )
     $inputGithub.placeholder = 'Thank you for using.';
     openPopup(); // 다희님 코드
     $inputGithub.value = '';
